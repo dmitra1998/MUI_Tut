@@ -1,0 +1,34 @@
+{
+  "notes": [
+    {
+      "title": "Yoshi's birthday bash",
+      "details": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+      "category": "reminders",
+      "id": "1"
+    },
+    {
+      "title": "Complete my ninja training",
+      "details": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took.",
+      "category": "work",
+      "id": "2"
+    },
+    {
+      "title": "Order a pizza!",
+      "details": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.\nLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+      "category": "todos",
+      "id": "3"
+    },
+    {
+      "id": "e9d9",
+      "title": "Pay the milkman",
+      "details": "I have to pay the milkman today",
+      "category": "money"
+    },
+    {
+      "id": "7d35",
+      "title": "Long Paragraph",
+      "details": "\nGreat\n\nWow! This looks amazing! God blessed you with a talent unknown to mankind! You are special, the shepherd of the sheep, the cream of the crop, and simply a fine young (MAN/WOMAN).  Though so young, I'm currently witnessing a prime example of the youth shedding their adolescence! It's been 49 years since the death of the once prestiged Picasso, and you (SON/MA'AM) are the sole reincarnation of that man! One can only say how proud of a (RELATION TO SUBJECT) I sincerely am! Your voice is scripture that settles the minds of the lost and the confused! If life was to drop lemons in your hands, not only would you make lemonade, but you'd share it with your brethren to strengthen the bonds you cherish! I would say that statement is true but I can't as its incomprehensible for you are the one who drops the lemons in the hands of others! I know this is alot, but I simply mean to say \" that's great\" ",
+      "category": "work"
+    }
+  ]
+}
