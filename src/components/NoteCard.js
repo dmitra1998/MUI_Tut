@@ -8,7 +8,7 @@ const NoteCard = ({note, handleDelete}) => {
       <Card elevation={1}>
         <CardHeader
             avatar={
-              <Avatar sx={{backgroundColor: note.category=='work'?yellow[700]: note.category=='money'?green[500]: note.category=='todos'?pink[500]:blue[500]}}>
+              <Avatar sx={{backgroundColor: note.category==='work'?yellow[700]: note.category==='money'?green[500]: note.category==='todos'?pink[500]:blue[500]}}>
                 {note.category[0].toUpperCase()}
               </Avatar>
             }

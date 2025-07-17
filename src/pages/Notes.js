@@ -4,22 +4,38 @@ import Paper from '@mui/material/Paper'
 import { Container } from '@mui/material'
 import NoteCard from '../components/NoteCard'
 import Masonry from '@mui/lab/Masonry';
+import { createClient } from '@supabase/supabase-js';
+
+const supabase = createClient(
+  process.env.REACT_APP_SUPABASE_URL,
+  process.env.REACT_APP_SUPABASE_ANON_KEY
+);
 
 export default function Notes() {
 
   const [notes, setNotes] = useState([])
 
-  useEffect(() => {
-    fetch('http://localhost:8000/notes')
-      .then(res => res.json())
-      .then(data => setNotes(data))
-      .catch(err => console.error('Error fetching notes:', err))
-  }, [])
+  // useEffect(() => {
+  //   fetch('http://localhost:8000/notes')
+  //     .then(res => res.json())
+  //     .then(data => setNotes(data))
+  //     .catch(err => console.error('Error fetching notes:', err))
+  // }, [])
+
+  useEffect(()=>{
+    const fetchNotes = async () => {
+      const { data, error } = await supabase.from('Notes').select('*');
+      if (error) console.error(error.message);
+      else setNotes(data);
+    };
+    fetchNotes();
+  },[])
 
   const handleDelete = async (id) => {
-    await fetch(`http://localhost:8000/notes/${id}`, {
-      method: 'DELETE'
-    })
+    const { data, error } = await supabase
+      .from('Notes')
+      .delete()
+      .eq('id', id);
     const newNotes = notes.filter(note => note.id !== id)
     setNotes(newNotes)
   }

@@ -10,6 +10,12 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
 import { useNavigate } from 'react-router-dom';
+import { createClient } from '@supabase/supabase-js';
+
+const supabase = createClient(
+  process.env.REACT_APP_SUPABASE_URL,
+  process.env.REACT_APP_SUPABASE_ANON_KEY
+);
 
 export default function Create() {
   const [title, setTitle] = useState('');
@@ -19,28 +25,59 @@ export default function Create() {
   const [detailsError, setDetailsError] = useState(false);
   const [category, setCategory] = useState('money');
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
 
+  //   setTitleError(false);
+  //   setDetailsError(false);
+
+  //   if(title === '') setTitleError(true);
+  //   if(details === '') setDetailsError(true);
+
+  //   if(title && details){
+  //     fetch('http://localhost:8000/notes', {
+  //       method: 'POST',
+  //       headers: {
+  //         'Content-Type': 'application/json'
+  //       },
+  //       body: JSON.stringify({ title, details, category })
+  //     }).then(() => {
+  //       // Example: navigate to home after submit
+  //       navigate('/');
+  //     })
+  //   }
+  // }
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
     setTitleError(false);
     setDetailsError(false);
 
     if(title === '') setTitleError(true);
     if(details === '') setDetailsError(true);
 
-    if(title && details){
-      fetch('http://localhost:8000/notes', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ title, details, category })
-      }).then(() => {
-        // Example: navigate to home after submit
-        navigate('/');
-      })
+    if (!title ||  !details || !category) {
+      //toast.error("All fields are required");
+      return;
     }
-  }
+
+    //setUploading(true);
+
+    const { data, error } = await supabase
+      .from('Notes')
+      .insert([{ title, details, category }])
+    
+    if (error) {
+      console.log(error)
+    }
+    if (data) {
+      
+    }
+    setTitle('');
+    setDetails('');  
+    setCategory('');
+    navigate('/');
+  };
 
   return (
     <Container>
